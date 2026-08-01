@@ -1,71 +1,32 @@
-# my-first-extension README
+<div align="center">
 
-This is the README for your extension "my-first-extension". After writing up a brief description, we recommend including the following sections.
+# Smart Snippets Manager para VS Code
 
-## Features
+¡Nunca vuelvas a escribir el mismo bloque de código dos veces! 
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+Una extensión modular, rápida e interactiva para **guardar, organizar mediante tags e insertar fragmentos de código** directamente desde el editor.
 
 ---
 
-## Following extension guidelines
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![VS Code API](https://img.shields.io/badge/VS%20Code%20API-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+</div>
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+##  Características Principales
 
-## Working with Markdown
+*  **Guardado Rápido y Detallado:** Captura cualquier selección de código con un comando y asignale nombre, descripción y lenguaje.
+*  **Categorización por Tags:** Organiza tus snippets usando etiquetas (`Frontend`, `Backend`, `BBDD`, `Seguridad`...). Puedes seleccionar categorías existentes mediante un `QuickPick` o crear nuevas sobre la marcha.
+*  **Panel Lateral Personalizado (`TreeView`):** Explora tu biblioteca agrupada por carpetas dinámicas de tags directamente en la barra de actividades de VS Code.
+*  **Inserción Instantánea:** Pasa el ratón sobre cualquier snippet para ver una **previsualización en Markdown** del código e insértalo en tu cursor activo con un solo clic.
+*  **Arquitectura Modular Clean Code:** Lógica desacoplada mediante un patrón claro de controladores, proveedores de datos y utilidades.
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+---
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+##  Instalación y Uso Local
 
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+1. Clona este repositorio:
+   
+   ```bash
+   git clone [https://github.com/TU_USUARIO/my-first-extension.git](https://github.com/TU_USUARIO/my-first-extension.git)
