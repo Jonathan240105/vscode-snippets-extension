@@ -1,7 +1,11 @@
 import * as vscode from "vscode";
 import { detailedSave } from "./commands/detailedSave";
 import { quickSave } from "./commands/quickSave";
+import { deleteSnippet } from "./commands/deleteSnippet";
+import { copySnippet } from "./commands/copySnippet";
 import { SnippetProvider } from "./SnippetProvider";
+import { TreeItem } from "./Utils/TreeItem";
+
 
 export function activate(context: vscode.ExtensionContext) {
   const snippetProvider = new SnippetProvider(context);
@@ -33,12 +37,33 @@ export function activate(context: vscode.ExtensionContext) {
     },
   );
 
+  let deleteSnippetCommand = vscode.commands.registerCommand(
+    "my-first-extension.deleteSnippet",
+    async (item: TreeItem) => {
+      await deleteSnippet(context, item);
+      snippetProvider.refresh();
+    },
+  );
+
+  let copySnippetCommand = vscode.commands.registerCommand(
+    "my-first-extension.copySnippet",
+    async (item: TreeItem) => {
+      await copySnippet(item);
+    },
+  );
+
   async function handleDetailedSaveWithRefresh() {
     await detailedSave(context);
     snippetProvider.refresh();
   }
 
-  context.subscriptions.push(disposableQuickSave, disposableDetailedSave, insertSnippetCommand);
+  context.subscriptions.push(
+    disposableQuickSave,
+    disposableDetailedSave,
+    insertSnippetCommand,
+    deleteSnippetCommand,
+    copySnippetCommand,
+  );
 }
 
 export function deactivate() {}
