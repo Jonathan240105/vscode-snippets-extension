@@ -38,8 +38,42 @@
       {
         "command": "my-first-extension.detailedSave",
         "title": "Guardado detallado"
+      },
+      {
+        "command": "my-first-extension.deleteSnippet",
+        "title": "Eliminar snippet",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "my-first-extension.copySnippet",
+        "title": "Copiar snippet",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "my-first-extension.editSnippet",
+        "title": "Editar snippet",
+        "icon": "$(edit)"
       }
-    ]
+    ],
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "my-first-extension.deleteSnippet",
+          "when": "view == mySnippetsExplorer && viewItem == snippet",
+          "group": "inline"
+        },
+        {
+          "command": "my-first-extension.copySnippet",
+          "when": "view == mySnippetsExplorer && viewItem == snippet",
+          "group": "inline"
+        },
+        {
+          "command": "my-first-extension.editSnippet",
+          "when": "view == mySnippetsExplorer && viewItem == snippet",
+          "group": "inline"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

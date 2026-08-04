@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 import { Snippet } from "../Models";
 
-export async function showTagSelector(context: vscode.ExtensionContext) {
+export async function showTagSelector(context: vscode.ExtensionContext, initialTags: string[] = []) {
   const currentSnippets: Snippet[] =
     context.globalState.get("mySnippets") || [];
   const existingTags = new Set<string>([
@@ -21,6 +21,7 @@ export async function showTagSelector(context: vscode.ExtensionContext) {
     (tag) => ({
       label: tag,
       description: "Categoría existente",
+      picked: initialTags.includes(tag),
     }),
   );
 
