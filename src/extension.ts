@@ -5,6 +5,7 @@ import { deleteSnippet } from "./commands/deleteSnippet";
 import { copySnippet } from "./commands/copySnippet";
 import { SnippetProvider } from "./SnippetProvider";
 import { TreeItem } from "./Utils/TreeItem";
+import { editSnippet } from "./commands/editSnippet";
 
 
 export function activate(context: vscode.ExtensionContext) {
@@ -42,14 +43,22 @@ export function activate(context: vscode.ExtensionContext) {
     async (item: TreeItem) => {
       await deleteSnippet(context, item);
       snippetProvider.refresh();
-    },
+    }
   );
 
   let copySnippetCommand = vscode.commands.registerCommand(
     "my-first-extension.copySnippet",
     async (item: TreeItem) => {
       await copySnippet(item);
-    },
+    }
+  );
+
+  let editSnippetCommand = vscode.commands.registerCommand(
+    "my-first-extension.editSnippet",
+    async (item: TreeItem) =>{
+      await editSnippet(context, item);
+      snippetProvider.refresh();
+    } 
   );
 
   async function handleDetailedSaveWithRefresh() {
@@ -63,6 +72,7 @@ export function activate(context: vscode.ExtensionContext) {
     insertSnippetCommand,
     deleteSnippetCommand,
     copySnippetCommand,
+    editSnippetCommand
   );
 }
 
