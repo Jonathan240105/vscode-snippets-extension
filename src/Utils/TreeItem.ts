@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import {getCategoryIcon, getSnippetIcon} from "./iconHelper";
 
 export class TreeItem extends vscode.TreeItem {
     
@@ -8,24 +9,29 @@ export class TreeItem extends vscode.TreeItem {
     public readonly isFolder: boolean,
     public readonly code?: string,
     public readonly desc?: string,
+    public readonly language?: string
   ) {
     super(label, collapsibleState);
 
     if (this.isFolder) {
-      this.iconPath = new vscode.ThemeIcon("folder");
+      this.iconPath = getCategoryIcon(this.label);
       this.contextValue = "folder";
 
     } else {
-
-      this.iconPath = new vscode.ThemeIcon("code");
+      this.iconPath = getSnippetIcon(this.language);
       this.contextValue = "snippet";
+
+      if(this.language){
+        this.description = `[${this.language}]`;
+      }
+
 
       const tooltipmarkdown = new vscode.MarkdownString();
 
       if (this.desc) {
         tooltipmarkdown.appendMarkdown(`*${this.desc}*\n\n---\n\n`);
       }
-      tooltipmarkdown.appendCodeblock(this.code || "", "");
+      tooltipmarkdown.appendCodeblock(this.code || "", this.language || "");
       this.tooltip = tooltipmarkdown;
     }
   }

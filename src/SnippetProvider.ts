@@ -59,6 +59,7 @@ export class SnippetProvider implements vscode.TreeDataProvider<TreeItem> {
           false,
           s.code,
           s.description,
+          s.language
         );
 
         item.command = {
