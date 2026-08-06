@@ -18,7 +18,12 @@ export function activate(context: vscode.ExtensionContext) {
     (code: string) => {
       const editor = vscode.window.activeTextEditor;
       if (editor) {
-        editor.insertSnippet(new vscode.SnippetString(code));
+
+        const snippetString = new vscode.SnippetString(code);
+
+        editor.insertSnippet(snippetString);
+      }else{
+        vscode.window.showWarningMessage('Abre un archivo para insertar el snippet');
       }
     },
   );

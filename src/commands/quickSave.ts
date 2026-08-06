@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import { Snippet } from "../Models";
 import { getSelectedText, saveToGlobalState } from "../Utils/Utils";
+import { autoGeneratePlaceholders } from "../Utils/snippetParser";
 
 export async function quickSave(context: vscode.ExtensionContext) {
   const editor = vscode.window.activeTextEditor;
@@ -10,6 +11,7 @@ export async function quickSave(context: vscode.ExtensionContext) {
   }
 
   const selectedText = getSelectedText(editor);
+  const dynamicCode = autoGeneratePlaceholders(selectedText || "");
   if (!selectedText) return;
 
   const name = await vscode.window.showInputBox({
@@ -21,7 +23,7 @@ export async function quickSave(context: vscode.ExtensionContext) {
     const newSnippet : Snippet = {
         id : Date.now().toString(),
         name: name,
-        code: selectedText,
+        code: dynamicCode,
         language: editor.document.languageId,
         tag: ["General"],
         description: "Guardado rápido",
