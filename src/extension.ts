@@ -6,7 +6,7 @@ import { copySnippet } from "./commands/copySnippet";
 import { SnippetProvider } from "./SnippetProvider";
 import { TreeItem } from "./Utils/TreeItem";
 import { editSnippet } from "./commands/editSnippet";
-
+import { searchSnippet } from "./commands/searchSnippet";
 
 export function activate(context: vscode.ExtensionContext) {
   const snippetProvider = new SnippetProvider(context);
@@ -18,12 +18,13 @@ export function activate(context: vscode.ExtensionContext) {
     (code: string) => {
       const editor = vscode.window.activeTextEditor;
       if (editor) {
-
         const snippetString = new vscode.SnippetString(code);
 
         editor.insertSnippet(snippetString);
-      }else{
-        vscode.window.showWarningMessage('Abre un archivo para insertar el snippet');
+      } else {
+        vscode.window.showWarningMessage(
+          "Abre un archivo para insertar el snippet",
+        );
       }
     },
   );
@@ -48,22 +49,22 @@ export function activate(context: vscode.ExtensionContext) {
     async (item: TreeItem) => {
       await deleteSnippet(context, item);
       snippetProvider.refresh();
-    }
+    },
   );
 
   let copySnippetCommand = vscode.commands.registerCommand(
     "my-first-extension.copySnippet",
     async (item: TreeItem) => {
       await copySnippet(item);
-    }
+    },
   );
 
   let editSnippetCommand = vscode.commands.registerCommand(
     "my-first-extension.editSnippet",
-    async (item: TreeItem) =>{
+    async (item: TreeItem) => {
       await editSnippet(context, item);
       snippetProvider.refresh();
-    } 
+    },
   );
 
   async function handleDetailedSaveWithRefresh() {
@@ -71,13 +72,19 @@ export function activate(context: vscode.ExtensionContext) {
     snippetProvider.refresh();
   }
 
+  let searchSnippetCommand = vscode.commands.registerCommand(
+    "my-first-extension.searchSnippets",
+    () => searchSnippet(context),
+  );
+
   context.subscriptions.push(
     disposableQuickSave,
     disposableDetailedSave,
     insertSnippetCommand,
     deleteSnippetCommand,
     copySnippetCommand,
-    editSnippetCommand
+    editSnippetCommand,
+    searchSnippetCommand
   );
 }
 

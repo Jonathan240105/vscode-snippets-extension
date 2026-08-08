@@ -53,6 +53,11 @@
         "command": "my-first-extension.editSnippet",
         "title": "Editar snippet",
         "icon": "$(edit)"
+      },
+      {
+        "command": "my-first-extension.searchSnippets",
+        "title": "Buscar e insertar Snippet",
+        "category": "SmartSnippets"
       }
     ],
     "menus": {
