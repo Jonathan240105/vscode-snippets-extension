@@ -2,9 +2,14 @@
   "name": "my-first-extension",
   "displayName": "My-first-extension",
   "description": "",
-  "version": "0.0.1",
+  "publisher": "alexZzz",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.125.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jonathan240105/vscode-snippets-extension.git"
   },
   "categories": [
     "Other"
@@ -91,17 +96,17 @@
         }
       ],
       "view/title": [
-            {
-                "command": "my-first-extension.exportSnippets",
-                "when": "view == mySnippetsExplorer",
-                "group": "navigation@1"
-            },
-            {
-                "command": "my-first-extension.importSnippets",
-                "when": "view == mySnippetsExplorer",
-                "group": "navigation@2"
-            }
-        ]
+        {
+          "command": "my-first-extension.exportSnippets",
+          "when": "view == mySnippetsExplorer",
+          "group": "navigation@1"
+        },
+        {
+          "command": "my-first-extension.importSnippets",
+          "when": "view == mySnippetsExplorer",
+          "group": "navigation@2"
+        }
+      ]
     }
   },
   "scripts": {
