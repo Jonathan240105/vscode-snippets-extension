@@ -1,7 +1,7 @@
 {
-  "name": "my-first-extension",
-  "displayName": "My-first-extension",
-  "description": "",
+  "name": "alexzzz-snippets-manager",
+  "displayName": "Smart Snippets Manager Pro",
+  "description": "A simple snippets manager for Visual Studio Code",
   "publisher": "alexZzz",
   "version": "1.0.0",
   "engines": {
