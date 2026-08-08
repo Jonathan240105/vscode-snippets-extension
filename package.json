@@ -58,6 +58,18 @@
         "command": "my-first-extension.searchSnippets",
         "title": "Buscar e insertar Snippet",
         "category": "SmartSnippets"
+      },
+      {
+        "command": "my-first-extension.exportSnippets",
+        "title": "Exportar Snippets",
+        "category": "Smart Snippets",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "my-first-extension.importSnippets",
+        "title": "Importar Snippets",
+        "category": "Smart Snippets",
+        "icon": "$(cloud-download)"
       }
     ],
     "menus": {
@@ -77,7 +89,19 @@
           "when": "view == mySnippetsExplorer && viewItem == snippet",
           "group": "inline"
         }
-      ]
+      ],
+      "view/title": [
+            {
+                "command": "my-first-extension.exportSnippets",
+                "when": "view == mySnippetsExplorer",
+                "group": "navigation@1"
+            },
+            {
+                "command": "my-first-extension.importSnippets",
+                "when": "view == mySnippetsExplorer",
+                "group": "navigation@2"
+            }
+        ]
     }
   },
   "scripts": {

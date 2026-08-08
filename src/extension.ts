@@ -7,6 +7,10 @@ import { SnippetProvider } from "./SnippetProvider";
 import { TreeItem } from "./Utils/TreeItem";
 import { editSnippet } from "./commands/editSnippet";
 import { searchSnippet } from "./commands/searchSnippet";
+import {
+  exportSnippetsCommand,
+  importSnippetsCommand,
+} from "./commands/exportImport";
 
 export function activate(context: vscode.ExtensionContext) {
   const snippetProvider = new SnippetProvider(context);
@@ -77,6 +81,16 @@ export function activate(context: vscode.ExtensionContext) {
     () => searchSnippet(context),
   );
 
+  let exportCommand = vscode.commands.registerCommand(
+    "my-first-extension.exportSnippets",
+    () => exportSnippetsCommand(context),
+  );
+
+  let importCommand = vscode.commands.registerCommand(
+    "my-first-extension.importSnippets",
+    () => importSnippetsCommand(context, snippetProvider),
+  );
+
   context.subscriptions.push(
     disposableQuickSave,
     disposableDetailedSave,
@@ -84,7 +98,9 @@ export function activate(context: vscode.ExtensionContext) {
     deleteSnippetCommand,
     copySnippetCommand,
     editSnippetCommand,
-    searchSnippetCommand
+    searchSnippetCommand,
+    exportCommand,
+    importCommand,
   );
 }
 
